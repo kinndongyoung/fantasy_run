@@ -359,7 +359,7 @@ namespace SWS
             if (events == null || events.Count - 1 < index || events[index] == null
                 || loopType == LoopType.random && index == rndArray[rndArray.Length - 1])
                 return;
-
+            
             events[index].Invoke();
         }
 
