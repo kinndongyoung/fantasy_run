@@ -18,7 +18,8 @@ public class JumpScript : MonoBehaviour
         Player_rigidbody = GetComponent<Rigidbody>();
         Player_animator = GetComponent<Animator>();
     }
-
+    //505 -247 0
+    //0.8 0.8 1
     void Update()
     {
 
