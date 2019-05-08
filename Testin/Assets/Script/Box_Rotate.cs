@@ -1,17 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 //Box
 public class Box_Rotate : MonoBehaviour
 {
     //public float Xspeed,Yspeed = -100f,Zspeed;
     public float Yspeed = 70;
+    int iRandom;// = Random.Range(0 , 2);
+    public GameObject Item, Item1, Item2;
 
-
+    public bool state;
     // Update is called once per frame
+    private void Start()
+    {
+        Item = GameObject.FindGameObjectWithTag("Item");
+        Item1 = GameObject.FindGameObjectWithTag("Item1");
+        Item2 = GameObject.FindGameObjectWithTag("Item2");
+       
+    }
+
     void Update()
     {
+        state = false;
         this.transform.Rotate(0, Time.deltaTime * Yspeed, 0, Space.World);
         //this.transform.Rotate(new Vector3(0, 0, 70) * Time.deltaTime);
         //transform.Rotate(Time.deltaTime*Xspeed, Time.deltaTime*Yspeed, Time.deltaTime*Zspeed, Space.World);
@@ -20,14 +31,24 @@ public class Box_Rotate : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-
+        iRandom = Random.Range(0, 2);
         //플레이어가 아이템에 닿았을 때 
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-             //other.gameObject.SetActive(false);
-            Destroy(gameObject);
+
             
-             //event
+            //Item.gameObject.SetActive(true);
+            state = true;
+            Destroy(gameObject);
+            if (iRandom == 1)
+                Item.gameObject.SetActive(true);
+            else if (iRandom == 0)
+                Item1.gameObject.SetActive(true);
+            else if (iRandom == 2)
+                Item2.gameObject.SetActive(true);
+            //gameobject.setactive(false);
+            //event (아이템 생성)
+
         }
     }
 
