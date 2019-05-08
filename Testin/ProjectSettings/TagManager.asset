@@ -9,6 +9,9 @@ TagManager:
   - Wall
   - Trigger
   - DangerousObj
+  - Item
+  - Item1
+  - Item2
   layers:
   - Default
   - TransparentFX
