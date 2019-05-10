@@ -30,7 +30,7 @@ public class EndTrigger : MonoBehaviour
         }            
     }
 
-    private void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
