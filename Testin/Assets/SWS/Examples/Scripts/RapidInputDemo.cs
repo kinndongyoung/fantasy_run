@@ -76,7 +76,7 @@ public class RapidInputDemo : MonoBehaviour
         move.speed = 0.01f;
         //initialize movement but don't start it yet
         move.StartMove();
-        move.Pause();
+        //move.Pause();
         move.speed = 0f;
     }
 
