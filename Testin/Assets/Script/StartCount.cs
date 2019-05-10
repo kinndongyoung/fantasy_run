@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StartCount : MonoBehaviour
-{    
-    [HideInInspector]
-    public bool isRun;
+{
+    public SWS.splineMove spline_move;
     private float fTime;
 
     void start()
     {
-        isRun = false;
+        spline_move.WayPointUpdate = false;
+        fTime = 0.0f;
     }
 
     void Update()
     {       
         if(fTime >= 3.0f)
-            isRun = true;
+            spline_move.WayPointUpdate = true;
         else if(fTime < 3.0f)
             fTime += Time.deltaTime;
     }
