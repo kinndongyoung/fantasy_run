@@ -86,7 +86,7 @@ namespace SWS
         /// <summary>
         /// Speed or time value depending on the selected TimeValue type.
         /// <summary>
-        public float speed = 5;
+        public float speed = 0;
 
         /// <summary>
         /// Custom curve when AnimationCurve has been selected as easeType.
@@ -185,9 +185,21 @@ namespace SWS
         private TimeCount Time_Count;
         private Animator Player_Ani;
 
+        [HideInInspector]
+        public bool WayPointUpdate;
+
+        [HideInInspector]
+        public bool isCol;
+        private float start_fspeed;
+        private int repeat_count;
         //check for automatic initialization
         void Start()
-        {            
+        {
+            isCol = false;
+            WayPointUpdate = false;
+            start_fspeed = speed;
+            repeat_count = 0;
+
             Start_Number = GameObject.Find("StartCount");
             Start_Count = GameObject.Find("StartCount").GetComponent<StartCount>();
             Time_Count = GameObject.Find("LapTime").GetComponent<TimeCount>();
@@ -196,17 +208,38 @@ namespace SWS
 
         void Update()
         {
-            if (Start_Count.isRun)
-            {
-                Start_Number.SetActive(false);
-                Start_Count.isRun = false;
-                Time_Count.Time_bState = true;
-                Player_Ani.SetBool("isRun", true);
+            Debug.Log("WayPointUpdate : " + WayPointUpdate);
 
-                StartMove();
+            if (WayPointUpdate)
+            {
+                if (speed != start_fspeed)
+                    speed = start_fspeed;
+                else if (repeat_count == 0)
+                {
+                    Start_Number.SetActive(false);
+                    Time_Count.Time_bState = true;
+                    Player_Ani.SetBool("isRun", true);
+
+                    StartMove();
+                }
+                WayPointUpdate = false;
             }
-            else if (Start_Count.isRun == false)
-                return;
+            else if (WayPointUpdate == false)
+            {
+                Debug.Log("isCol : " + isCol);
+
+                if (isCol == true)
+                {
+                    WayPointUpdate = true;
+                    speed = 0;
+                    repeat_count++;
+
+                    // 에셋 스크립트 건드려서 필기한 부분이라 신경 안써도됨 
+                    // Pause 함수 : 스크립트 수정 부분 RuntimeDemo, RapidInputDemo, PathInputDemo, CameroInputDemo
+                    Pause(2.0f);
+                }
+                else return;
+            }                
         }
 
         /// <summary>
@@ -588,7 +621,7 @@ namespace SWS
         /// <summary>
         /// Pauses the current movement routine for a defined amount of time.
         /// <summary>
-        public void Pause(float seconds = 0f)
+        public void Pause(float seconds/* = 0f*/)
         {
             StopCoroutine(Wait());
             if (tween != null)
