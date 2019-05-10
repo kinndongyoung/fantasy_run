@@ -30,7 +30,7 @@ public class CameraInputDemo : MonoBehaviour
     {
         myMove = gameObject.GetComponent<splineMove>();
         myMove.StartMove();
-        myMove.Pause();
+        //myMove.Pause();
     }
       
 
