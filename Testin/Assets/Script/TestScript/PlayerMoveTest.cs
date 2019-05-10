@@ -6,10 +6,6 @@ public class PlayerMove : MonoBehaviour
 {
     public float fForwardSpd = 5.0f;
 
-    void Awake()
-    {
-    }
-
     void Update()
     {
         transform.Translate(Vector3.forward * fForwardSpd * Time.deltaTime);
