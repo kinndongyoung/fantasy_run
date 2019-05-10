@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveSaw : MonoBehaviour
 {
-    public Transform Saw;
+    private Transform Saw;
 
     private int Direction = 1;
     public float Move_fSpeed = 0.0f;
