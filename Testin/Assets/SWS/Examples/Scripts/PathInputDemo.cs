@@ -35,7 +35,7 @@ public class PathInputDemo : MonoBehaviour
         animator = GetComponent<Animator>();
         move = GetComponent<splineMove>();
         move.StartMove();
-        move.Pause();
+        //move.Pause();
         progress = 0f;
     }
 
