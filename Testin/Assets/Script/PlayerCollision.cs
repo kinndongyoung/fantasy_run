@@ -28,9 +28,12 @@ public class PlayerCollision : MonoBehaviour
         }
 
         if(fCol_count <= 3.0f)
-            fCol_count += Time.deltaTime;
+            fCol_count += Time.deltaTime;        
+    }
 
-        //Player_animator.SetFloat("Col_Count", fCol_count);
+    void LateUpdate()
+    {
+        Player_animator.SetFloat("Col_Count", fCol_count);
     }
 
     void OnTriggerEnter(Collider other)
