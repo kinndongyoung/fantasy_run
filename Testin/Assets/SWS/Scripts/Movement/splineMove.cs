@@ -192,6 +192,7 @@ namespace SWS
         public bool isCol;
         private float start_fspeed;
         private int repeat_count;
+
         //check for automatic initialization
         void Start()
         {
@@ -208,13 +209,11 @@ namespace SWS
 
         void Update()
         {
-            Debug.Log("WayPointUpdate : " + WayPointUpdate);
-
             if (WayPointUpdate)
             {
-                if (speed != start_fspeed)
+                if (speed != start_fspeed && isCol == false)
                     speed = start_fspeed;
-                else if (repeat_count == 0)
+                else if (repeat_count == 0) // 초기화
                 {
                     Start_Number.SetActive(false);
                     Time_Count.Time_bState = true;
@@ -226,8 +225,7 @@ namespace SWS
             }
             else if (WayPointUpdate == false)
             {
-                Debug.Log("isCol : " + isCol);
-
+                // 충돌해서 멈춤
                 if (isCol == true)
                 {
                     WayPointUpdate = true;
