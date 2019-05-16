@@ -6,12 +6,14 @@ public class PlayerCollision : MonoBehaviour
 {
     private SWS.splineMove spline_move;
     private Animator Player_animator;
+
+    [HideInInspector]
+    public float fCol_count;
     private float fTime;
-    private float fCol_count;
 
     void Start()
     {
-        fCol_count = 3.0f;
+        fCol_count = 2.0f;
 
         spline_move = GameObject.Find("avatar1").GetComponent<SWS.splineMove>();
         Player_animator = GameObject.Find("avatar1").GetComponent<Animator>();
@@ -27,7 +29,7 @@ public class PlayerCollision : MonoBehaviour
             Player_animator.SetBool("isCol", false);
         }
 
-        if(fCol_count <= 3.0f)
+        if(fCol_count <= 2.0f)
             fCol_count += Time.deltaTime;        
     }
 
@@ -38,7 +40,7 @@ public class PlayerCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "DangerousObj" && fCol_count >= 3.0f)
+        if (other.gameObject.tag == "DangerousObj" && fCol_count >= 2.0f)
         {
             fTime = 0.0f;
             fCol_count = 0.0f;
