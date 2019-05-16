@@ -18,13 +18,17 @@ public class JumpScript : MonoBehaviour
         Player_rigidbody = GetComponent<Rigidbody>();
         Player_animator = GetComponent<Animator>();
     }
-
+    //505 -247 0
+    //0.8 0.8 1
     void Update()
     {
 
         if (Input.GetButtonDown("Jump"))
         {
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
             isJumping = true;
             bCheck = true;
             Player_rigidbody.AddForce(Vector3.up * fJumpPower, ForceMode.Impulse);
@@ -44,6 +48,18 @@ public class JumpScript : MonoBehaviour
             Player_Collider.center = new Vector3(0, (fTime + 1.3f), 0);
             fTime += Time.deltaTime;
 
+        }
+        if (fTime >= 1.3f)
+        {
+            Player_Collider.center = new Vector3(0, (float)1.3, 0);
+            bCheck = false;
+            fTime = 0.0f;
+        }
+        //콜리더 박스가 올라갔다 내려갔다.
+        if (bCheck == true)
+        {
+            Player_Collider.center = new Vector3(0, (fTime + 1.3f), 0);
+            fTime += Time.deltaTime;
         }
         if (fTime >= 1.3f)
         {
