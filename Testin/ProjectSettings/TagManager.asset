@@ -8,6 +8,11 @@ TagManager:
   - UI
   - Wall
   - Trigger
+  - DangerousObj
+  - Item
+  - Item1
+  - Item2
+  - PassObj
   layers:
   - Default
   - TransparentFX
@@ -20,9 +25,9 @@ TagManager:
   - PostProcessing
   - Player
   - Trigeer
-  - 
+  - DangerousObj
   - Wall
-  - 
+  - PassObj
   - 
   - 
   - 
