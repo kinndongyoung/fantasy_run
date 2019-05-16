@@ -153,7 +153,7 @@ public class RuntimeDemo : MonoBehaviour
         if (example4.moveRef.tween != null && example4.moveRef.tween.IsPlaying()
             && GUI.Button(new Rect(30, 90, 100, 20), "Pause"))
         {
-            example4.moveRef.Pause();
+            //example4.moveRef.Pause();
         }
 
         if (example4.moveRef.tween != null && !example4.moveRef.tween.IsPlaying()
