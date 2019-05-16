@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 //Box
-public class Box_Rotate : MonoBehaviour
+public class Item_Box : MonoBehaviour
 {
     //public float Xspeed,Yspeed = -100f,Zspeed;
     public float Yspeed = 70;
-    int iRandom;// = Random.Range(0 , 2);
+    public int iRandom;// = Random.Range(0 , 2);
     public GameObject Item, Item1, Item2;
 
     public bool state;
@@ -31,7 +31,7 @@ public class Box_Rotate : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        iRandom = Random.Range(0, 2);
+        iRandom = Random.Range(0, 5);
         //플레이어가 아이템에 닿았을 때 
         if (other.gameObject.tag == "Player")
         {
@@ -39,13 +39,14 @@ public class Box_Rotate : MonoBehaviour
             
             //Item.gameObject.SetActive(true);
             state = true;
-            Destroy(gameObject);
-            if (iRandom == 1)
-                Item.gameObject.SetActive(true);
-            else if (iRandom == 0)
+            if (iRandom == 1 || iRandom == 3)
                 Item1.gameObject.SetActive(true);
-            else if (iRandom == 2)
+            else if (iRandom == 0 || iRandom == 4)
+                Item.gameObject.SetActive(true);
+            else if (iRandom == 2 || iRandom == 5)
                 Item2.gameObject.SetActive(true);
+            Destroy(gameObject);
+
             //gameobject.setactive(false);
             //event (아이템 생성)
 
