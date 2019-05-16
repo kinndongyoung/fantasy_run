@@ -184,6 +184,7 @@ namespace SWS
         private StartCount Start_Count;
         private TimeCount Time_Count;
         private Animator Player_Ani;
+        private PlayerCollision PlayerCol;
 
         [HideInInspector]
         public bool WayPointUpdate;
@@ -192,6 +193,7 @@ namespace SWS
         public bool isCol;
         private float start_fspeed;
         private int repeat_count;
+        private float Player_fCol_count;
 
         //check for automatic initialization
         void Start()
@@ -200,6 +202,7 @@ namespace SWS
             WayPointUpdate = false;
             start_fspeed = speed;
             repeat_count = 0;
+            Player_fCol_count = 2.0f;
 
             Start_Number = GameObject.Find("StartCount");
             Start_Count = GameObject.Find("StartCount").GetComponent<StartCount>();
@@ -211,7 +214,7 @@ namespace SWS
         {
             if (WayPointUpdate)
             {
-                if (speed != start_fspeed && isCol == false)
+                if (speed != start_fspeed)
                     speed = start_fspeed;
                 else if (repeat_count == 0) // 초기화
                 {
@@ -234,10 +237,15 @@ namespace SWS
 
                     // 에셋 스크립트 건드려서 필기한 부분이라 신경 안써도됨 
                     // Pause 함수 : 스크립트 수정 부분 RuntimeDemo, RapidInputDemo, PathInputDemo, CameroInputDemo
-                    Pause(2.0f);
+                    if(Player_fCol_count >= 2.0f)
+                    {
+                        Player_fCol_count = 0.0f;
+                        Pause(2.0f);
+                    }                        
                 }
                 else return;
-            }                
+            }
+            Player_fCol_count += Time.deltaTime;
         }
 
         /// <summary>
