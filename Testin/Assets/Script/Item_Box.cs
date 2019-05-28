@@ -32,18 +32,18 @@ public class Item_Box : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         iRandom = Random.Range(0, 5);
-        //플레이어가 아이템에 닿았을 때 
+        //플레이어가 아이템에 닿았을 때   
         if (other.gameObject.tag == "Player")
         {
 
             
             //Item.gameObject.SetActive(true);
             state = true;
-            if (iRandom == 1 || iRandom == 3)
-                Item1.gameObject.SetActive(true);
-            else if (iRandom == 0 || iRandom == 4)
-                Item.gameObject.SetActive(true);
-            else if (iRandom == 2 || iRandom == 5)
+    //        if (iRandom == 1 || iRandom == 3)
+    //            Item1.gameObject.SetActive(true);
+    //        else if (iRandom == 0 || iRandom == 4)
+    //            Item.gameObject.SetActive(true);
+    //        else if (iRandom == 2 || iRandom == 5)
                 Item2.gameObject.SetActive(true);
             Destroy(gameObject);
 
