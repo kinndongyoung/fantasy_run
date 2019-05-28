@@ -14,6 +14,7 @@ using DG.Tweening.Core;
 using DG.Tweening.Plugins.Core.PathCore;
 using DG.Tweening.Plugins.Options;
 
+
 namespace SWS
 {
     /// <summary>
@@ -92,7 +93,7 @@ namespace SWS
         /// Custom curve when AnimationCurve has been selected as easeType.
         /// <summary>
         public AnimationCurve animEaseType;
-
+      
         /// <summary>
         /// Supported movement looptypes when moving on the path. 
         /// <summary>
@@ -179,12 +180,14 @@ namespace SWS
         //looptype random waypoint index array
         private int[] rndArray;
 
+
         // Customize Script                
         private GameObject Start_Number;
         private StartCount Start_Count;
         private TimeCount Time_Count;
         private Animator Player_Ani;
         private PlayerCollision PlayerCol;
+        private ItemEffet Item_Effet;
 
         [HideInInspector]
         public bool WayPointUpdate;
@@ -208,10 +211,18 @@ namespace SWS
             Start_Count = GameObject.Find("StartCount").GetComponent<StartCount>();
             Time_Count = GameObject.Find("LapTime").GetComponent<TimeCount>();
             Player_Ani = GameObject.Find("avatar1").GetComponent<Animator>();
+            Item_Effet = GameObject.Find("Item_Icon(Speed)").GetComponent<ItemEffet>();
         }
 
         void Update()
         {
+            if(Item_Effet.bState == true)
+            {
+                originSpeed += 15;
+                speed += 15;
+                ChangeSpeed(100);
+                Item_Effet.bState = false;
+            }
             if (WayPointUpdate)
             {
                 if (speed != start_fspeed)
