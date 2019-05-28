@@ -191,6 +191,9 @@ namespace SWS
 
         [HideInInspector]
         public bool isCol;
+
+        [HideInInspector]
+        public float newValue;
         private float start_fspeed;
         private int repeat_count;
         private float Player_fCol_count;
@@ -725,15 +728,15 @@ namespace SWS
         /// <summary>
         public void ChangeSpeed(float value)
         {
-            //calulate new timeScale value based on original speed
-            float newValue;
-            if (timeValue == TimeValue.speed)
-                newValue = value / originSpeed;
-            else
-                newValue = originSpeed / value;
+            //calulate new timeScale value based on original speed         
+            //if (timeValue == TimeValue.speed)
+            //    newValue = value / originSpeed;
+            //else
+            //    newValue = originSpeed / value;
 
             //set speed, change timeScale percentually
-            speed = value;
+            //speed = value;
+            newValue = value;
             if (tween != null)
                 tween.timeScale = newValue;
         }
