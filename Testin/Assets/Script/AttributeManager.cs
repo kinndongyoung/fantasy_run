@@ -12,19 +12,25 @@ public class AttributeManager : MonoBehaviour
         eForest   ,
     }
 
-    public GameObject AttributeObj_Space;
-    public GameObject AttributeObj_Fire;
-    public GameObject AttributeObj_Peace;
-    public GameObject AttributeObj_Forest;
+    public Animator Animator_Player;
 
-    private int Rand_Attribute;
+    private GameObject AttributeObj_Space;
+    private GameObject AttributeObj_Fire;
+    private GameObject AttributeObj_Peace;
+    private GameObject AttributeObj_Forest;
+    
+    private SWS.splineMove spline_move;
+    private int Rand_Attribute;    
 
     void Awake()
     {
+        Animator_Player = GameObject.Find("avatar1").GetComponent<Animator>();
         AttributeObj_Space = GameObject.Find("Attribute_Space");
         AttributeObj_Fire = GameObject.Find("Attribute_Fire");
         AttributeObj_Peace = GameObject.Find("Attribute_Peace");
         AttributeObj_Forest = GameObject.Find("Attribute_Forest");
+        
+        spline_move = GameObject.Find("avatar1").GetComponent<SWS.splineMove>();
 
         AttributeObj_Space.SetActive(false);
         AttributeObj_Fire.SetActive(false);
@@ -34,7 +40,7 @@ public class AttributeManager : MonoBehaviour
 
     void Start()
     {
-        Rand_Attribute = Random.Range(1, 5);
+        Rand_Attribute = 1;//Random.Range(1, 5);
 
         switch(Rand_Attribute)
         {
@@ -72,12 +78,14 @@ public class AttributeManager : MonoBehaviour
 
     void AttributeFunc_Fire()
     {
-
+       // Fire 속성 수치 조정 부분
+       spline_move.speed = 30.0f;
     }
 
     void AttributeFunc_Peace()
     {
-
+        // Peace 속성 수치 조정 부분
+        Animator_Player.SetFloat("fSpeed", 2.0f);
     }
 
     void AttributeFunc_Forest()
