@@ -7,12 +7,15 @@ using UnityEngine.EventSystems;
 
 public class Test : MonoBehaviour
 {
+    public SWS.splineMove spline_Move;
     public Item_Box ItemBox;
+   
 
     private GameObject target;
     // Start is called befsore the first frame update
     void Start()
     {
+        spline_Move = GameObject.FindGameObjectWithTag("Player").GetComponent<SWS.splineMove>();
         ItemBox.GetComponent<Item_Box>();
        // if(box_rotate.state == false)
        // this.gameObject.SetActive(true);
@@ -28,14 +31,16 @@ public class Test : MonoBehaviour
     {
         if (ItemBox.state == false)
             this.gameObject.SetActive(false);
-
+        //일정시간동안 스피드업
         
         if(Input.GetMouseButton(0))
         {
 
             if(EventSystem.current.IsPointerOverGameObject())
             {
+         
                 this.gameObject.SetActive(false);
+
             }
 
             
