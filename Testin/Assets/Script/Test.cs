@@ -29,7 +29,7 @@ public class Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ItemBox.state == false)
+        //if (ItemBox.state == false)
             this.gameObject.SetActive(false);
         //일정시간동안 스피드업
         
