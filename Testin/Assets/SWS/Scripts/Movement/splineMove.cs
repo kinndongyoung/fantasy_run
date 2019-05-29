@@ -272,11 +272,11 @@ namespace SWS
 
         IEnumerator SpeedUpItem()
         {
-            changeSpeed = 20;
-            ChangeSpeed(changeSpeed);
-            yield return new WaitForSeconds(2.5f);
-            changeSpeed = 13;
-            ChangeSpeed(changeSpeed);
+            speed = 0.0f;
+            ChangeSpeed(speed);
+            yield return new WaitForSeconds(1.0f);
+            speed = 5;
+            ChangeSpeed(speed);
             Item_Effet.Speed1_state = false;
             Item_Effet.Speed2_state = false;
         }
