@@ -40,12 +40,15 @@ public class PlayerCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "DangerousObj" && fCol_count >= 2.0f)
+        if (spline_move.IgnoreCheck == false)
         {
-            fTime = 0.0f;
-            fCol_count = 0.0f;
-            spline_move.isCol = true;
-            Player_animator.SetBool("isCol", true);
+            if (other.gameObject.tag == "DangerousObj" && fCol_count >= 2.0f)
+            {
+                fTime = 0.0f;
+                fCol_count = 0.0f;
+                spline_move.isCol = true;
+                Player_animator.SetBool("isCol", true);
+            }
         }
     }
 }
