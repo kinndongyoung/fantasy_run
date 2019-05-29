@@ -6,12 +6,11 @@ using UnityEngine.EventSystems;
 
 public class ItemEffet : MonoBehaviour
 {
-    [HideInInspector]
     public SWS.splineMove spline_Move;
     public Item_Box Item_Box;
     private GameObject taget;
     [HideInInspector]
-    public bool Speed1_state, Speed2_state, Igonore_state;
+    public bool Speed1_state, Speed2_state, Ignore_state;
 
     void Start()
     {
@@ -31,7 +30,7 @@ public class ItemEffet : MonoBehaviour
             this.gameObject.SetActive(false);
         if (Item_Box.Speed2_state == false)
             this.gameObject.SetActive(false);
-        if (Item_Box.Igonore_state == false)
+        if (Item_Box.Ignore_state == false)
             this.gameObject.SetActive(false);
 
         if (Item_Box.Speed1_state == true)
@@ -42,7 +41,7 @@ public class ItemEffet : MonoBehaviour
         {
             this.gameObject.SetActive(true);
         }
-        if (Item_Box.Igonore_state == true)
+        if (Item_Box.Ignore_state == true)
         {
             this.gameObject.SetActive(true);
         }
@@ -58,9 +57,9 @@ public class ItemEffet : MonoBehaviour
                 {
                     Speed2_state = true;
                 }
-                if (Item_Box.Igonore_state == true)
+                if (Item_Box.Ignore_state == true)
                 {
-                    Igonore_state = true;
+                    Ignore_state = true;
                 }
                 this.gameObject.SetActive(false);
             }
