@@ -13,7 +13,7 @@ using DG.Tweening;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Core.PathCore;
 using DG.Tweening.Plugins.Options;
-
+//
 
 namespace SWS
 {
@@ -219,7 +219,7 @@ namespace SWS
             Start_Count = GameObject.Find("StartCount").GetComponent<StartCount>();
             Time_Count = GameObject.Find("LapTime").GetComponent<TimeCount>();
             Player_Ani = GameObject.Find("avatar1").GetComponent<Animator>();
-            Item_Effet = GameObject.Find("Item_Icon(Speed)").GetComponent<ItemEffet>();
+            Item_Effet = GameObject.Find("Item(Speed)").GetComponent<ItemEffet>();
 
            
         }
@@ -272,7 +272,7 @@ namespace SWS
 
         IEnumerator SpeedUpItem()
         {
-            changeSpeed = 40;
+            changeSpeed = 20;
             ChangeSpeed(changeSpeed);
             yield return new WaitForSeconds(2.5f);
             changeSpeed = 13;
