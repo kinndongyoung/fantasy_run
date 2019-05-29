@@ -190,13 +190,18 @@ namespace SWS
         private TimeCount Time_Count;
         private Animator Player_Ani;
         private PlayerCollision PlayerCol;
-        private ItemEffet Item_Effet;
+        private ItemEffet Speed1Item_Effet;
+        private ItemEffet Speed2Item_Effet;
+        private ItemEffet IgnoreItem_Effet;
 
-        [HideInInspector]
+      [HideInInspector]
         public bool WayPointUpdate;
 
         [HideInInspector]
         public bool isCol;
+        [HideInInspector]
+        public bool IgnoreCheck;
+
 
         [HideInInspector]
         public float newValue;
@@ -207,6 +212,7 @@ namespace SWS
         //check for automatic initialization
         void Start()
         {
+            IgnoreCheck = false;
             isCol = false;
             WayPointUpdate = false;
             start_fspeed = speed;
@@ -219,18 +225,25 @@ namespace SWS
             Start_Count = GameObject.Find("StartCount").GetComponent<StartCount>();
             Time_Count = GameObject.Find("LapTime").GetComponent<TimeCount>();
             Player_Ani = GameObject.Find("avatar1").GetComponent<Animator>();
-            Item_Effet = GameObject.Find("Item(Speed)").GetComponent<ItemEffet>();
+            Speed1Item_Effet = GameObject.Find("Item(Speed1)").GetComponent<ItemEffet>();
+            Speed2Item_Effet = GameObject.Find("Item(Speed2)").GetComponent<ItemEffet>();
+            IgnoreItem_Effet = GameObject.Find("Item(Ignore)").GetComponent<ItemEffet>();
 
-           
         }
 
         void Update()
         {
-            if (Item_Effet.Speed1_state == true
-                || Item_Effet.Speed2_state == true)  //아이템
+            if (Speed1Item_Effet.Speed1_state == true)  //아이템
             {
                 StartCoroutine(SpeedUpItem());
-
+            }
+            else if(Speed2Item_Effet.Speed2_state == true)
+            {
+                StartCoroutine(SpeedUpItem(100));
+            }
+            else if (IgnoreItem_Effet.Ignore_state == true)
+            {
+                StartCoroutine(IgnoreItem());
             }
 
 
@@ -251,36 +264,53 @@ namespace SWS
             else if (WayPointUpdate == false)
             {
                 // 충돌해서 멈춤
-                if (isCol == true)
+                if (IgnoreCheck == false)
                 {
-                    WayPointUpdate = true;
-                    speed = 0;
-                    repeat_count++;
-
-                    // 에셋 스크립트 건드려서 필기한 부분이라 신경 안써도됨 
-                    // Pause 함수 : 스크립트 수정 부분 RuntimeDemo, RapidInputDemo, PathInputDemo, CameroInputDemo
-                    if(Player_fCol_count >= 2.0f)
+                    if (isCol == true)
                     {
-                        Player_fCol_count = 0.0f;
-                        Pause(2.0f);
-                    }                        
+                        WayPointUpdate = true;
+                        speed = 0;
+                        repeat_count++;
+
+                        // 에셋 스크립트 건드려서 필기한 부분이라 신경 안써도됨 
+                        // Pause 함수 : 스크립트 수정 부분 RuntimeDemo, RapidInputDemo, PathInputDemo, CameroInputDemo
+                        if (Player_fCol_count >= 2.0f)
+                        {
+                            Player_fCol_count = 0.0f;
+                            Pause(2.0f);
+                        }
+                    }
+                    else return;
                 }
-                else return;
             }
             Player_fCol_count += Time.deltaTime;
         }
 
         IEnumerator SpeedUpItem()
         {
-            speed = 0.0f;
+            speed = 1.55f;
             ChangeSpeed(speed);
-            yield return new WaitForSeconds(1.0f);
-            speed = 5;
+            yield return new WaitForSeconds(3.5f);
+            speed = 1.0f;
             ChangeSpeed(speed);
-            Item_Effet.Speed1_state = false;
-            Item_Effet.Speed2_state = false;
+            Speed1Item_Effet.Speed1_state = false;
         }
-
+        IEnumerator SpeedUpItem(int Num)
+        {
+            speed = 2.55f;
+            ChangeSpeed(speed);
+            yield return new WaitForSeconds(1.3f);
+            speed = 1.0f;
+            ChangeSpeed(speed);
+            Speed2Item_Effet.Speed2_state = false;
+        }
+        IEnumerator IgnoreItem()
+        {
+            IgnoreCheck = true;
+             yield return new WaitForSeconds(7.0f);
+            IgnoreCheck = false;
+            IgnoreItem_Effet.Ignore_state = false;
+        }
 
         /// <summary>
         /// Starts movement. Can be called from other scripts to allow start delay.
