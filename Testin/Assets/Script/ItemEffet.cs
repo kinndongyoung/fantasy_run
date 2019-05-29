@@ -6,10 +6,11 @@ using UnityEngine.EventSystems;
 
 public class ItemEffet : MonoBehaviour
 {
-    private SWS.splineMove spline_Move;
+    [HideInInspector]
+    public SWS.splineMove spline_Move;
     public Item_Box Item_Box;
     private GameObject taget;
-    
+    [HideInInspector]
     public bool Speed1_state, Speed2_state, Igonore_state;
 
     void Start()
@@ -45,7 +46,7 @@ public class ItemEffet : MonoBehaviour
         {
             this.gameObject.SetActive(true);
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             if(EventSystem.current.IsPointerOverGameObject())
             {
