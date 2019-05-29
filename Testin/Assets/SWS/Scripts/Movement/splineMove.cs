@@ -87,6 +87,9 @@ namespace SWS
         /// <summary>
         /// Speed or time value depending on the selected TimeValue type.
         /// <summary>
+        public float changeSpeed = 0;
+        private float Item_Time;
+        private float Item_CulTime;
         public float speed = 0;
 
         /// <summary>
@@ -206,23 +209,28 @@ namespace SWS
             start_fspeed = speed;
             repeat_count = 0;
             Player_fCol_count = 2.0f;
+            Item_CulTime = 0.0f;
+            Item_Time = 0.0f;
 
             Start_Number = GameObject.Find("StartCount");
             Start_Count = GameObject.Find("StartCount").GetComponent<StartCount>();
             Time_Count = GameObject.Find("LapTime").GetComponent<TimeCount>();
             Player_Ani = GameObject.Find("avatar1").GetComponent<Animator>();
             Item_Effet = GameObject.Find("Item_Icon(Speed)").GetComponent<ItemEffet>();
+
+           
         }
 
         void Update()
         {
-            if(Item_Effet.bState == true)
+            if (Item_Effet.Speed1_state == true
+                || Item_Effet.Speed2_state == true)  //아이템
             {
-                originSpeed += 15;
-                speed += 15;
-                ChangeSpeed(100);
-                Item_Effet.bState = false;
+                StartCoroutine(SpeedUpItem());
+
             }
+
+
             if (WayPointUpdate)
             {
                 if (speed != start_fspeed)
@@ -258,6 +266,18 @@ namespace SWS
             }
             Player_fCol_count += Time.deltaTime;
         }
+
+        IEnumerator SpeedUpItem()
+        {
+            changeSpeed = 40;
+            ChangeSpeed(changeSpeed);
+            yield return new WaitForSeconds(2.5f);
+            changeSpeed = 13;
+            ChangeSpeed(changeSpeed);
+            Item_Effet.Speed1_state = false;
+            Item_Effet.Speed2_state = false;
+        }
+
 
         /// <summary>
         /// Starts movement. Can be called from other scripts to allow start delay.
@@ -380,6 +400,7 @@ namespace SWS
             if (originSpeed != speed)
                 ChangeSpeed(speed);
         }
+
 
 
         //called when moveToPath completes
