@@ -33,7 +33,7 @@ public class Item_Box : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        iRandom = 1;//Random.Range(0, 5);
+        iRandom = Random.Range(0, 1);
         //플레이어가 아이템에 닿았을 때   
         if (other.gameObject.tag == "Player")
         {
@@ -49,12 +49,12 @@ public class Item_Box : MonoBehaviour
     IEnumerator ItemCheck()
     {
       
-        if (iRandom == 1 || iRandom == 3)
+        if (iRandom == 0 || iRandom == 3)
         {
             Speed_Item1.gameObject.SetActive(true);
             Speed1_state = true;
         }
-        else if (iRandom == 0 || iRandom == 4)
+        else if (iRandom == 1 || iRandom == 4)
         {
             Speed_Item2.gameObject.SetActive(true);
             Speed2_state = true;
