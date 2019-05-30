@@ -33,7 +33,7 @@ public class Item_Box : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        iRandom = 2;//Random.Range(0, 5);
+        iRandom = Random.Range(0, 5);
         //플레이어가 아이템에 닿았을 때   
         if (other.gameObject.tag == "Player")
         {
