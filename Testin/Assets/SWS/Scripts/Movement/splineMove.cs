@@ -239,7 +239,7 @@ namespace SWS
             }
             else if(Speed2Item_Effet.Speed2_state == true)
             {
-                StartCoroutine(SpeedUpItem(100));
+                StartCoroutine(SpeedUpItem(0));
             }
             else if (IgnoreItem_Effet.Ignore_state == true)
             {
