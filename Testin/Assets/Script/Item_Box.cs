@@ -7,7 +7,7 @@ public class Item_Box : MonoBehaviour
 {
     //public float Xspeed,Yspeed = -100f,Zspeed;
     public float Yspeed = 70;
-    public int iRandom;// = Random.Range(0 , 2);
+    public int iRandom;
     public GameObject Speed_Item1, Speed_Item2, Ignore_Item;
 
     public bool Speed1_state, Speed2_state, Ignore_state;
@@ -39,10 +39,6 @@ public class Item_Box : MonoBehaviour
         {
             StartCoroutine(ItemCheck());
                 Destroy(gameObject);
-
-            //gameobject.setactive(false);
-            //event (아이템 생성)
-
         }
     }
 
