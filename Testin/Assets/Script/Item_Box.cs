@@ -15,19 +15,20 @@ public class Item_Box : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-        Speed_Item1 = GameObject.FindGameObjectWithTag("Item");
-        Ignore_Item = GameObject.FindGameObjectWithTag("Item1");
-        Speed_Item2 = GameObject.FindGameObjectWithTag("Item2");
+        //Speed_Item1 = GameObject.FindGameObjectWithTag("Item");
+        //Ignore_Item = GameObject.FindGameObjectWithTag("Item1");
+        //Speed_Item2 = GameObject.FindGameObjectWithTag("Item2");
         Speed_Item1.gameObject.SetActive(false);
         Speed_Item2.gameObject.SetActive(false);
         Ignore_Item.gameObject.SetActive(false);
+        Speed1_state = false;
+        Speed2_state = false;
+        Ignore_state = false;
     }
 
     void Update()
     {
-        Speed1_state = false;
-        Speed2_state = false;
-        Ignore_state = false;
+
         this.transform.Rotate(0, Time.deltaTime * Yspeed, 0, Space.World);
         //this.transform.Rotate(new Vector3(0, 0, 70) * Time.deltaTime);
         //transform.Rotate(Time.deltaTime*Xspeed, Time.deltaTime*Yspeed, Time.deltaTime*Zspeed, Space.World);
@@ -37,7 +38,7 @@ public class Item_Box : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        iRandom = Random.Range(0, 6);
+        iRandom = Random.Range(0, 17);
         //플레이어가 아이템에 닿았을 때   
         if (other.gameObject.tag == "Player")
         {
@@ -49,17 +50,17 @@ public class Item_Box : MonoBehaviour
     IEnumerator ItemCheck()
     {
       
-        if (iRandom == 0 || iRandom == 3)
+        if (iRandom <= 5)
         {
             Speed_Item1.gameObject.SetActive(true);
             Speed1_state = true;
         }
-        else if (iRandom == 1 || iRandom == 4)
+        else if (iRandom > 5 && iRandom <= 10)
         {
             Speed_Item2.gameObject.SetActive(true);
             Speed2_state = true;
         }
-        else if (iRandom == 2 || iRandom == 5)
+        else if (iRandom > 10)
         {
             
             Ignore_Item.gameObject.SetActive(true);
