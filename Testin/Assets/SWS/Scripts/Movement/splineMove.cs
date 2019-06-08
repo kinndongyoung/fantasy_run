@@ -190,9 +190,10 @@ namespace SWS
         private TimeCount Time_Count;
         private Animator Player_Ani;
         private PlayerCollision PlayerCol;
-        private ItemEffet Speed1Item_Effet;
-        private ItemEffet Speed2Item_Effet;
-        private ItemEffet IgnoreItem_Effet;
+
+        public Item_Box Speed1Item_Effet;
+        public Item_Box Speed2Item_Effet;
+        public Item_Box IgnoreItem_Effet;
 
       [HideInInspector]
         public bool WayPointUpdate;
@@ -225,14 +226,21 @@ namespace SWS
             Start_Count = GameObject.Find("StartCount").GetComponent<StartCount>();
             Time_Count = GameObject.Find("LapTime").GetComponent<TimeCount>();
             Player_Ani = GameObject.Find("avatar1").GetComponent<Animator>();
-            Speed1Item_Effet = GameObject.Find("Item(Speed1)").GetComponent<ItemEffet>();
-            Speed2Item_Effet = GameObject.Find("Item(Speed2)").GetComponent<ItemEffet>();
-            IgnoreItem_Effet = GameObject.Find("Item(Ignore)").GetComponent<ItemEffet>();
+            //Speed1Item_Effet = GameObject.Find("Item(Speed1)").GetComponent<ItemEffet>();
+            //Speed2Item_Effet = GameObject.Find("Item(Speed2)").GetComponent<ItemEffet>();
+            //IgnoreItem_Effet = GameObject.Find("Item(Ignore)").GetComponent<ItemEffet>();
+
+            Speed1Item_Effet = FindObjectOfType<Item_Box>();
+            Speed2Item_Effet = FindObjectOfType<Item_Box>();
+            IgnoreItem_Effet = FindObjectOfType<Item_Box>();
 
         }
 
         void Update()
         {
+            Debug.Log("Spline Move state = " + Speed1Item_Effet.Speed1_state);
+            Debug.Log("Spline Move state = " + Speed2Item_Effet.Speed2_state);
+            Debug.Log("Spline Move state = " + IgnoreItem_Effet.Ignore_state);
             if (Speed1Item_Effet.Speed1_state == true)  //아이템
             {
                 StartCoroutine(SpeedUpItem());
