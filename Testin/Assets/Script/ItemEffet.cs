@@ -12,9 +12,11 @@ public class ItemEffet : MonoBehaviour
     [HideInInspector]
     public bool Speed1_state, Speed2_state, Ignore_state;
 
+    public bool State;
+
     void Start()
     {
-
+        State = false;
         spline_Move = GameObject.FindGameObjectWithTag("Player").GetComponent<SWS.splineMove>();
         Item_Box = FindObjectOfType<Item_Box>();
     }
@@ -23,7 +25,7 @@ public class ItemEffet : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
-
+    //122 55 109
     void Update()
     {
         Debug.Log("Effet state = " + Speed1_state);
@@ -57,15 +59,15 @@ public class ItemEffet : MonoBehaviour
             {
                 if (Item_Box.Speed1_state == true)
                 {
-                    Speed1_state = true;
+                    State = true;
                 }
                 if (Item_Box.Speed2_state == true)
                 {
-                    Speed2_state = true;
+                    State = true;
                 }
                 if (Item_Box.Ignore_state == true)
                 {
-                    Ignore_state = true;
+                    State = true;
                 }
                 this.gameObject.SetActive(false);
             }
