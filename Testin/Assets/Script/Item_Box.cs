@@ -9,6 +9,7 @@ public class Item_Box : MonoBehaviour
     public float Yspeed = 70;
     public int iRandom;
     public GameObject Speed_Item1, Speed_Item2, Ignore_Item;
+     
 
     public bool Speed1_state, Speed2_state, Ignore_state;
     // Update is called once per frame
@@ -17,7 +18,9 @@ public class Item_Box : MonoBehaviour
         Speed_Item1 = GameObject.FindGameObjectWithTag("Item");
         Ignore_Item = GameObject.FindGameObjectWithTag("Item1");
         Speed_Item2 = GameObject.FindGameObjectWithTag("Item2");
-       
+        Speed_Item1.gameObject.SetActive(false);
+        Speed_Item2.gameObject.SetActive(false);
+        Ignore_Item.gameObject.SetActive(false);
     }
 
     void Update()
@@ -28,17 +31,18 @@ public class Item_Box : MonoBehaviour
         this.transform.Rotate(0, Time.deltaTime * Yspeed, 0, Space.World);
         //this.transform.Rotate(new Vector3(0, 0, 70) * Time.deltaTime);
         //transform.Rotate(Time.deltaTime*Xspeed, Time.deltaTime*Yspeed, Time.deltaTime*Zspeed, Space.World);
-        
-       
+
+
+
     }
     void OnTriggerEnter(Collider other)
     {
-        iRandom = Random.Range(0, 5);
+        iRandom = Random.Range(0, 6);
         //플레이어가 아이템에 닿았을 때   
         if (other.gameObject.tag == "Player")
         {
             StartCoroutine(ItemCheck());
-                Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -47,16 +51,17 @@ public class Item_Box : MonoBehaviour
       
         if (iRandom == 0 || iRandom == 3)
         {
-            Speed_Item2.gameObject.SetActive(true);
+            Speed_Item1.gameObject.SetActive(true);
             Speed1_state = true;
         }
         else if (iRandom == 1 || iRandom == 4)
         {
-            Speed_Item1.gameObject.SetActive(true);
+            Speed_Item2.gameObject.SetActive(true);
             Speed2_state = true;
         }
         else if (iRandom == 2 || iRandom == 5)
         {
+            
             Ignore_Item.gameObject.SetActive(true);
             Ignore_state = true;
         }
