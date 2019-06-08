@@ -49,40 +49,40 @@ public class JumpScript : MonoBehaviour
         }
 
         //콜리더 박스가 올라갔다 내려갔다.
-        Player_Collider.center = new Vector3(0, 1.3f, 0);
-
-        switch (bCheck)
-        {
-            case (int)STATE.eIDLE:
-            {
-                Player_Collider.center = new Vector3(0, 1.3f, 0);
-            }
-            break;
-            case (int)STATE.eUP:
-            {
-                Player_Collider.center = new Vector3(0, (fJumpPower * Time.deltaTime), 0);
-                fTime += Time.deltaTime;
-
-                if (Player.transform.localPosition.y >= Temp_PlayerPos.y + 10)
-                {
-                    bCheck = (int)STATE.eDOWN;
-                    fTime = 0.0f;
-                }
-            }
-            break;
-            case (int)STATE.eDOWN:
-            {
-                Player_Collider.center = new Vector3(0, ((-fJumpPower) * Time.deltaTime), 0);
-                fTime += Time.deltaTime;
-
-                if (Player.transform.localPosition.y <= Temp_PlayerPos.y)
-                {
-                    bCheck = (int)STATE.eIDLE;
-                    Player.transform.localPosition.Set(Temp_PlayerPos.x, Temp_PlayerPos.y, Temp_PlayerPos.z);
-                    fTime = 0.0f;
-                }                        
-            }
-            break;
-        }
+        //Player_Collider.center = new Vector3(0, 1.3f, 0);
+        //
+        //switch (bCheck)
+        //{
+        //    case (int)STATE.eIDLE:
+        //    {
+        //        Player_Collider.center = new Vector3(0, 1.3f, 0);
+        //    }
+        //    break;
+        //    case (int)STATE.eUP:
+        //    {
+        //        Player_Collider.center = new Vector3(0, (fJumpPower * Time.deltaTime), 0);
+        //        fTime += Time.deltaTime;
+        //
+        //        if (Player.transform.localPosition.y >= Temp_PlayerPos.y + 10)
+        //        {
+        //            bCheck = (int)STATE.eDOWN;
+        //            fTime = 0.0f;
+        //        }
+        //    }
+        //    break;
+        //    case (int)STATE.eDOWN:
+        //    {
+        //        Player_Collider.center = new Vector3(0, ((-fJumpPower) * Time.deltaTime), 0);
+        //        fTime += Time.deltaTime;
+        //
+        //        if (Player.transform.localPosition.y <= Temp_PlayerPos.y)
+        //        {
+        //            bCheck = (int)STATE.eIDLE;
+        //            Player.transform.localPosition.Set(Temp_PlayerPos.x, Temp_PlayerPos.y, Temp_PlayerPos.z);
+        //            fTime = 0.0f;
+        //        }                        
+        //    }
+        //    break;
+        //}
     }
 }

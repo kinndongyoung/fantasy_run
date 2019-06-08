@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class ItemEffet : MonoBehaviour
 {
     public SWS.splineMove spline_Move;
-    public Item_Box Item_Box;
+    private Item_Box Item_Box;
     private GameObject taget;
     [HideInInspector]
     public bool Speed1_state, Speed2_state, Ignore_state;
@@ -16,7 +16,7 @@ public class ItemEffet : MonoBehaviour
     {
 
         spline_Move = GameObject.FindGameObjectWithTag("Player").GetComponent<SWS.splineMove>();
-        Item_Box.GetComponent<Item_Box>();
+        Item_Box = FindObjectOfType<Item_Box>();
     }
 
     private void OnMouseDown()
@@ -26,6 +26,12 @@ public class ItemEffet : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Effet state = " + Speed1_state);
+        Debug.Log("Effet state = " + Speed2_state);
+        Debug.Log("Effet state = " + Ignore_state);
+        Debug.Log("Item_Box.Speed1_state = " + Item_Box.Speed1_state);
+        Debug.Log("Item_Box.Speed2_state = " + Item_Box.Speed2_state);
+        Debug.Log("Item_Box.Ignore_state = " + Item_Box.Ignore_state);
         if (Item_Box.Speed1_state == false)
             this.gameObject.SetActive(false);
         if (Item_Box.Speed2_state == false)
