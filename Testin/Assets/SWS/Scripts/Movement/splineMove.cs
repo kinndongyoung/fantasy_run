@@ -296,20 +296,20 @@ namespace SWS
 
         IEnumerator SpeedUpItem()
         {
-            speed = 1.55f;
-            ChangeSpeed(speed);
+            //speed = 1.55f;
+            ChangeSpeed(1.55f);
             yield return new WaitForSeconds(3.5f);
-            speed = 1.0f;
-            ChangeSpeed(speed);
+            //speed = 1.0f;
+            ChangeSpeed(1.0f);
             Speed1Item_Effet.State = false;
         }
         IEnumerator SpeedUpItem(int Num)
         {
-            speed = 2.55f;
-            ChangeSpeed(speed);
+            //speed = 2.55f;
+            ChangeSpeed(2.55f);
             yield return new WaitForSeconds(1.3f);
-            speed = 1.0f;
-            ChangeSpeed(speed);
+            //speed = 1.0f;
+            ChangeSpeed(1.0f);
             Speed2Item_Effet.State = false;
         }
         IEnumerator IgnoreItem()
@@ -317,6 +317,7 @@ namespace SWS
             IgnoreCheck = true;
              yield return new WaitForSeconds(7.0f);
             IgnoreCheck = false;
+             ChangeSpeed(1.0f);
             IgnoreItem_Effet.State = false;
         }
 
