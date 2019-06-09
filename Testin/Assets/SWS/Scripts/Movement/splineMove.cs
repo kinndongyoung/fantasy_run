@@ -233,7 +233,9 @@ namespace SWS
             //Speed1Item_Effet = FindObjectOfType<Item_Box>();
             //Speed2Item_Effet = FindObjectOfType<Item_Box>();
             //IgnoreItem_Effet = FindObjectOfType<Item_Box>();
-
+            StartCoroutine(SpeedUpItem());
+            StartCoroutine(SpeedUpItem(0));
+            StartCoroutine(IgnoreItem());
         }
 
         void Update()
@@ -241,18 +243,21 @@ namespace SWS
             //Debug.Log("Spline Move state = " + Speed1Item_Effet.Speed1_state);
             //Debug.Log("Spline Move state = " + Speed2Item_Effet.Speed2_state);
             //Debug.Log("Spline Move state = " + IgnoreItem_Effet.Ignore_state);
-            if (Speed1Item_Effet.State == true)  //아이템
-            {
-                StartCoroutine(SpeedUpItem());
-            }
-            else if(Speed2Item_Effet.State == true)
-            {
-                StartCoroutine(SpeedUpItem(0));
-            }
-            else if (IgnoreItem_Effet.State == true)
-            {
-                StartCoroutine(IgnoreItem());
-            }
+            //if (Speed1Item_Effet.State == true)  //아이템
+            //{
+               
+
+            //}
+            //else if(Speed2Item_Effet.State == true)
+            //{
+               
+
+            //}
+            //else if (IgnoreItem_Effet.State == true)
+            //{
+                
+
+            //}
 
 
             if (WayPointUpdate)
@@ -296,29 +301,35 @@ namespace SWS
 
         IEnumerator SpeedUpItem()
         {
-            //speed = 1.55f;
+            while (Speed1Item_Effet.State)
             ChangeSpeed(1.55f);
             yield return new WaitForSeconds(3.5f);
             //speed = 1.0f;
             ChangeSpeed(1.0f);
             Speed1Item_Effet.State = false;
+
         }
         IEnumerator SpeedUpItem(int Num)
         {
+            while (Speed2Item_Effet.State)
             //speed = 2.55f;
             ChangeSpeed(2.55f);
             yield return new WaitForSeconds(1.3f);
-            //speed = 1.0f;
             ChangeSpeed(1.0f);
             Speed2Item_Effet.State = false;
+            //speed = 1.0f;
+
         }
         IEnumerator IgnoreItem()
         {
-            IgnoreCheck = true;
-             yield return new WaitForSeconds(7.0f);
-            IgnoreCheck = false;
-             ChangeSpeed(1.0f);
-            IgnoreItem_Effet.State = false;
+            while (IgnoreItem_Effet.State)
+            {
+                IgnoreCheck = true;
+                yield return new WaitForSeconds(7.0f);
+                IgnoreCheck = false;
+                ChangeSpeed(1.0f);
+                IgnoreItem_Effet.State = false;
+            }
         }
 
         /// <summary>
