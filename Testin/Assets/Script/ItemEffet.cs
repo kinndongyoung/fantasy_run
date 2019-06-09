@@ -36,12 +36,13 @@ public class ItemEffet : MonoBehaviour
     void Update()
     {
 
-        Debug.Log("Effet state = " + Speed1_state);
-        Debug.Log("Effet state = " + Speed2_state);
-        Debug.Log("Effet state = " + Ignore_state);
-        Debug.Log("Item_Box.Speed1_state = " + Item_Box.Speed1_state);
-        Debug.Log("Item_Box.Speed2_state = " + Item_Box.Speed2_state);
-        Debug.Log("Item_Box.Ignore_state = " + Item_Box.Ignore_state);
+        //Debug.Log("Effet state = " + Speed1_state);
+        //Debug.Log("Effet state = " + Speed2_state);
+        //Debug.Log("Effet state = " + Ignore_state);
+        //Debug.Log("Item_Box.Speed1_state = " + Item_Box.Speed1_state);
+        //Debug.Log("Item_Box.Speed2_state = " + Item_Box.Speed2_state);
+        //Debug.Log("Item_Box.Ignore_state = " + Item_Box.Ignore_state);
+
         if (Item_Box.Speed1_state == false)
             this.gameObject.SetActive(false);
         if (Item_Box.Speed2_state == false)
