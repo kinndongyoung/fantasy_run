@@ -302,23 +302,25 @@ namespace SWS
         IEnumerator SpeedUpItem()
         {
             while (Speed1Item_Effet.State)
-            ChangeSpeed(1.55f);
-            yield return new WaitForSeconds(3.5f);
-            //speed = 1.0f;
-            ChangeSpeed(1.0f);
-            Speed1Item_Effet.State = false;
-
+            {
+                ChangeSpeed(1.55f);
+                yield return new WaitForSeconds(3.5f);
+                //speed = 1.0f;
+                ChangeSpeed(1.0f);
+                Speed1Item_Effet.State = false;
+            }
         }
         IEnumerator SpeedUpItem(int Num)
         {
             while (Speed2Item_Effet.State)
-            //speed = 2.55f;
-            ChangeSpeed(2.55f);
-            yield return new WaitForSeconds(1.3f);
-            ChangeSpeed(1.0f);
-            Speed2Item_Effet.State = false;
-            //speed = 1.0f;
-
+            {
+                //speed = 2.55f;
+                ChangeSpeed(2.55f);
+                yield return new WaitForSeconds(1.3f);
+                ChangeSpeed(1.0f);
+                Speed2Item_Effet.State = false;
+                //speed = 1.0f;
+            }
         }
         IEnumerator IgnoreItem()
         {
