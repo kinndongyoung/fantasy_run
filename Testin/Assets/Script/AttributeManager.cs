@@ -18,9 +18,13 @@ public class AttributeManager : MonoBehaviour
     private GameObject AttributeObj_Fire;
     private GameObject AttributeObj_Peace;
     private GameObject AttributeObj_Forest;
-    
+
+    private ItemEffet Item1;
+    private ItemEffet Item2;
+    private ItemEffet Item3;
     private SWS.splineMove spline_move;
-    private int Rand_Attribute;    
+    private int Rand_Attribute;
+    private int Rand_Item;
 
     void Awake()
     {
@@ -40,7 +44,11 @@ public class AttributeManager : MonoBehaviour
 
     void Start()
     {
-        Rand_Attribute = 1;//Random.Range(1, 5);
+        Item1 = FindObjectOfType<ItemEffet>();
+        Item2 = FindObjectOfType<ItemEffet>();
+        Item3 = FindObjectOfType<ItemEffet>();
+        Rand_Item = 1;// Random.Range(1, 4);
+        Rand_Attribute = 4;//Random.Range(1, 5);
 
         switch(Rand_Attribute)
         {
@@ -73,7 +81,7 @@ public class AttributeManager : MonoBehaviour
 
     void AttributeFunc_Space()
     {
-
+        spline_move.AddTime = 1.0f;
     }
 
     void AttributeFunc_Fire()
@@ -90,6 +98,36 @@ public class AttributeManager : MonoBehaviour
 
     void AttributeFunc_Forest()
     {
+        StartCoroutine(RandomItem());
+    }
+
+    IEnumerator RandomItem()
+    {
+        yield return new WaitForSeconds(8.0f);
+        switch (Rand_Item)
+        {
+            case 1:
+                {
+                    Item1.Item_Box.Speed1_state = true;
+                    Item1.gameObject.SetActive(true);
+                    Item1.Speed1_state = true;
+                    break;
+                }
+            case 2:
+                {
+                    Item2.Item_Box.Speed2_state = true;
+                    Item2.gameObject.SetActive(true);
+                    Item2.Speed1_state = true;
+                    break;
+                }
+            case 3:
+                {
+                    Item3.Item_Box.Ignore_state = true;
+                    Item3.gameObject.SetActive(true);
+                    Item3.Speed1_state = true;
+                    break;
+                }
+        }
 
     }
 }
