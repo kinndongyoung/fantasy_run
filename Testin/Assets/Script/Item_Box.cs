@@ -62,7 +62,6 @@ public class Item_Box : MonoBehaviour
         }
         else if (iRandom > 10)
         {
-            
             Ignore_Item.gameObject.SetActive(true);
             Ignore_state = true;
         }
