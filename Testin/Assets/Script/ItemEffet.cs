@@ -7,8 +7,13 @@ using UnityEngine.EventSystems;
 public class ItemEffet : MonoBehaviour
 {
     public SWS.splineMove spline_Move;
-    private Item_Box Item_Box;
+
+    [HideInInspector]
+    public Item_Box Item_Box;
     private GameObject taget;
+    private float timer;
+    private int wait;
+ 
     [HideInInspector]
     public bool Speed1_state, Speed2_state, Ignore_state;
 
@@ -16,6 +21,7 @@ public class ItemEffet : MonoBehaviour
 
     void Start()
     {
+        timer = 0.0f;
         State = false;
         spline_Move = GameObject.FindGameObjectWithTag("Player").GetComponent<SWS.splineMove>();
         Item_Box = FindObjectOfType<Item_Box>();
@@ -24,10 +30,12 @@ public class ItemEffet : MonoBehaviour
     private void OnMouseDown()
     {
         this.gameObject.SetActive(false);
+        spline_Move.ChangeSpeed(2.0f);
     }
     //122 55 109
     void Update()
     {
+
         Debug.Log("Effet state = " + Speed1_state);
         Debug.Log("Effet state = " + Speed2_state);
         Debug.Log("Effet state = " + Ignore_state);
@@ -41,15 +49,15 @@ public class ItemEffet : MonoBehaviour
         if (Item_Box.Ignore_state == false)
             this.gameObject.SetActive(false);
 
-        if (Item_Box.Speed1_state == true)
+        if (Item_Box.Speed1_state == true || Speed1_state == true)
         {
             this.gameObject.SetActive(true);
         }
-        if (Item_Box.Speed2_state == true)
+        if (Item_Box.Speed2_state == true || Speed2_state == true)
         {
             this.gameObject.SetActive(true);
         }
-        if (Item_Box.Ignore_state == true)
+        if (Item_Box.Ignore_state == true || Ignore_state == true)
         {
             this.gameObject.SetActive(true);
         }
@@ -72,5 +80,37 @@ public class ItemEffet : MonoBehaviour
                 this.gameObject.SetActive(false);
             }
         }
+
+        //StartCoroutine(SpeedUpItem());
+        //ItemSpeed1Up();
     }
+
+    IEnumerator SpeedUpItem()
+    {
+        while (State)
+        {
+            spline_Move.ChangeSpeed(1.55f);
+            yield return new WaitForSeconds(1.5f);
+            Debug.Log("food");
+            spline_Move.ChangeSpeed(1.0f);
+            State = false;
+        }
+    }
+
+    private void ItemSpeed1Up()
+    {
+        if (State)
+        {
+            timer += Time.deltaTime;
+            wait = 2;
+            spline_Move.ChangeSpeed(2.55f);
+            if (timer > wait)
+            {
+                spline_Move.ChangeSpeed(1.0f);
+                timer = 0.0f;
+                State = false;
+            }
+        }
+    }
+
 }
