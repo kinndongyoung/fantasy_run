@@ -202,6 +202,8 @@ namespace SWS
         public bool isCol;
         [HideInInspector]
         public bool IgnoreCheck;
+        [HideInInspector]
+        public float AddTime;
 
 
         [HideInInspector]
@@ -222,10 +224,13 @@ namespace SWS
             Item_CulTime = 0.0f;
             Item_Time = 0.0f;
 
-            Start_Number = GameObject.Find("StartCount");
+
+
+        Start_Number = GameObject.Find("StartCount");
             Start_Count = GameObject.Find("StartCount").GetComponent<StartCount>();
             Time_Count = GameObject.Find("LapTime").GetComponent<TimeCount>();
             Player_Ani = GameObject.Find("avatar1").GetComponent<Animator>();
+
             Speed1Item_Effet = GameObject.Find("Item(Speed1)").GetComponent<ItemEffet>();
             Speed2Item_Effet = GameObject.Find("Item(Speed2)").GetComponent<ItemEffet>();
             IgnoreItem_Effet = GameObject.Find("Item(Ignore)").GetComponent<ItemEffet>();
@@ -233,9 +238,10 @@ namespace SWS
             //Speed1Item_Effet = FindObjectOfType<Item_Box>();
             //Speed2Item_Effet = FindObjectOfType<Item_Box>();
             //IgnoreItem_Effet = FindObjectOfType<Item_Box>();
-            StartCoroutine(SpeedUpItem());
-            StartCoroutine(SpeedUpItem(0));
-            StartCoroutine(IgnoreItem());
+
+            //StartCoroutine(SpeedUpItem());
+            //StartCoroutine(SpeedUpItem(0));
+            //StartCoroutine(IgnoreItem());
         }
 
         void Update()
@@ -243,21 +249,18 @@ namespace SWS
             //Debug.Log("Spline Move state = " + Speed1Item_Effet.Speed1_state);
             //Debug.Log("Spline Move state = " + Speed2Item_Effet.Speed2_state);
             //Debug.Log("Spline Move state = " + IgnoreItem_Effet.Ignore_state);
-            //if (Speed1Item_Effet.State == true)  //아이템
-            //{
-               
-
-            //}
-            //else if(Speed2Item_Effet.State == true)
-            //{
-               
-
-            //}
-            //else if (IgnoreItem_Effet.State == true)
-            //{
-                
-
-            //}
+            if (Speed1Item_Effet.State == true)  //아이템
+            {
+                StartCoroutine(SpeedUpItem());
+            }
+            else if (Speed2Item_Effet.State == true)
+            {
+                StartCoroutine(SpeedUpItem(0));
+            }
+            else if (IgnoreItem_Effet.State == true)
+            {
+                StartCoroutine(IgnoreItem());
+            }
 
 
             if (WayPointUpdate)
@@ -304,7 +307,7 @@ namespace SWS
             while (Speed1Item_Effet.State)
             {
                 ChangeSpeed(1.55f);
-                yield return new WaitForSeconds(3.5f);
+                yield return new WaitForSeconds(2.5f + AddTime);
                 //speed = 1.0f;
                 ChangeSpeed(1.0f);
                 Speed1Item_Effet.State = false;
@@ -316,7 +319,7 @@ namespace SWS
             {
                 //speed = 2.55f;
                 ChangeSpeed(2.55f);
-                yield return new WaitForSeconds(1.3f);
+                yield return new WaitForSeconds(1.3f + AddTime);
                 ChangeSpeed(1.0f);
                 Speed2Item_Effet.State = false;
                 //speed = 1.0f;
@@ -327,7 +330,7 @@ namespace SWS
             while (IgnoreItem_Effet.State)
             {
                 IgnoreCheck = true;
-                yield return new WaitForSeconds(7.0f);
+                yield return new WaitForSeconds(3.0f + AddTime);
                 IgnoreCheck = false;
                 ChangeSpeed(1.0f);
                 IgnoreItem_Effet.State = false;
