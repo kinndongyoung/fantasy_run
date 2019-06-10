@@ -5,6 +5,8 @@ using UnityEngine;
 public class ClickAni_Woman : MonoBehaviour
 {
     private Animator Anim;
+    [HideInInspector]
+    public bool Woman_Select_State = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,8 @@ public class ClickAni_Woman : MonoBehaviour
                     Anim = GetComponent<Animator>();
 
                     Anim.SetBool("IsTouchWoman", true);
+                    Woman_Select_State = true;
+
                     //die();
                 }
 
@@ -39,6 +43,8 @@ public class ClickAni_Woman : MonoBehaviour
                     Anim = GetComponent<Animator>();
 
                     Anim.SetBool("IsTouchWoman", false);
+                    Woman_Select_State = false;
+
                     //die();
                 }
             }
