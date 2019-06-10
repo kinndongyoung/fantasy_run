@@ -62,7 +62,7 @@ public class ItemEffet : MonoBehaviour
         {
             this.gameObject.SetActive(true);
         }
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetTouch(0).phase == TouchPhase.Ended)
         {
             if(EventSystem.current.IsPointerOverGameObject())
             {
