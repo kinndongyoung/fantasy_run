@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45090842, g: 0.49922746, b: 0.56607336, a: 1}
+  m_IndirectSpecularColor: {r: 0.45090753, g: 0.4992267, b: 0.5660725, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -1029,6 +1029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe56436b20b82b047894c269eb0825eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Woman_Select_State: 0
 --- !u!136 &368944935
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -26563,6 +26564,7 @@ GameObject:
   - component: {fileID: 1869783753}
   - component: {fileID: 1869783752}
   - component: {fileID: 1869783751}
+  - component: {fileID: 1869783755}
   m_Layer: 5
   m_Name: GameStart
   m_TagString: Untagged
@@ -26647,7 +26649,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1869783753}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1869783755}
+        m_MethodName: OnClickFunc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1869783753
@@ -26687,6 +26700,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1869783749}
   m_CullTransparentMesh: 0
+--- !u!114 &1869783755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869783749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e9429af02ea6df4e85b69fdaf5c5678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ClickMan: {fileID: 1978933129}
+  ClickWoman: {fileID: 368944934}
 --- !u!1 &1875870391
 GameObject:
   m_ObjectHideFlags: 0
@@ -32302,6 +32329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70933a74f8b8bc748ac8d305861ffc4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Man_Select_State: 0
 --- !u!136 &1978933130
 CapsuleCollider:
   m_ObjectHideFlags: 0
