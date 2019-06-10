@@ -6,6 +6,8 @@ public class ClickAni_Man : MonoBehaviour
 {
     // Start is called before the first frame update
     private Animator Anim;
+    [HideInInspector]
+    public bool Man_Select_State = false;
 
     void Start()
     {
@@ -32,6 +34,7 @@ public class ClickAni_Man : MonoBehaviour
                     Anim = GetComponent<Animator>();
 
                     Anim.SetBool("IsTouchMan", true);
+                    Man_Select_State = true;
                 }
 
                 if (hit.transform.gameObject.tag == "Char_Woman")
@@ -42,6 +45,7 @@ public class ClickAni_Man : MonoBehaviour
                     Anim = GetComponent<Animator>();
 
                     Anim.SetBool("IsTouchMan", false);
+                    Man_Select_State = false;
                 }
             }
         }
