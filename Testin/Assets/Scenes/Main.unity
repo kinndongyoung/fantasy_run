@@ -219,7 +219,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7a300c2906482b949bd4733ed98378ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cada38bb9d301d645aa01faefec88807, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1029,6 +1029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe56436b20b82b047894c269eb0825eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Woman_Select_State: 0
 --- !u!136 &368944935
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1798,9 +1799,13 @@ MonoBehaviour:
   lockRotation: 0
   waypointRotation: 0
   rotationTarget: {fileID: 0}
+  Speed1Item_Effet: {fileID: 0}
+  Speed2Item_Effet: {fileID: 0}
+  IgnoreItem_Effet: {fileID: 0}
   WayPointUpdate: 0
   isCol: 0
   IgnoreCheck: 0
+  AddTime: 0
   newValue: 0
 --- !u!4 &482773391 stripped
 Transform:
@@ -3185,7 +3190,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 8e5c2d55be40b7a4ea990ff076aa7682, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1f09ddbea18062343a29847b283d29f5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19653,7 +19658,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a138e42f9c215c54fa16f63498392b4e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c38178479ce8186479c7ca572d64bc00, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -32210,6 +32215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70933a74f8b8bc748ac8d305861ffc4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Man_Select_State: 0
 --- !u!136 &1978933130
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -33027,7 +33033,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a138e42f9c215c54fa16f63498392b4e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c38178479ce8186479c7ca572d64bc00, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
