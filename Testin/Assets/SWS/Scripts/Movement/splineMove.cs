@@ -288,18 +288,15 @@ namespace SWS
                         speed = 0;
                         repeat_count++;
 
-                        // 에셋 스크립트 건드려서 필기한 부분이라 신경 안써도됨 
-                        // Pause 함수 : 스크립트 수정 부분 RuntimeDemo, RapidInputDemo, PathInputDemo, CameroInputDemo
                         if (Player_fCol_count >= 2.0f)
                         {
                             Player_fCol_count = 0.0f;
                             Pause(2.0f);
                         }
                     }
-                    else return;
+                    Player_fCol_count += Time.deltaTime;
                 }
             }
-            Player_fCol_count += Time.deltaTime;
         }
 
         IEnumerator SpeedUpItem()
