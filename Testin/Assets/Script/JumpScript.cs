@@ -17,7 +17,6 @@ public class JumpScript : MonoBehaviour
     public Rigidbody Player_rigidbody;
     public GameObject Player_Col;
     Animator Player_animator;
-    public JumpButton JumpBtn;
     bool isJumping;
     int bCheck;
 
@@ -29,7 +28,7 @@ public class JumpScript : MonoBehaviour
 
     void Update()
     {
-        if (JumpBtn.JumpButton_state == true && bCheck == (int)STATE.eIDLE)
+        if (Input.GetButtonDown("Jump") && bCheck == (int)STATE.eIDLE)
         {
             isJumping = true;
             bCheck = (int)STATE.eUP;
@@ -38,22 +37,17 @@ public class JumpScript : MonoBehaviour
             Player_rigidbody.AddForce(Vector3.up * fJumpPower, ForceMode.Impulse);
             Player_animator.SetBool("isJumping", true);
         }
-        else if (JumpBtn.JumpButton_state == true && bCheck == (int)STATE.eUP)
-        {
-            isJumping = false;            
-            Player_animator.SetBool("isJumping", false);
-        }
-
-        if(bCheck == (int)STATE.eUP)
+        else if(bCheck == (int)STATE.eUP)
         {
             fTime += Time.deltaTime;
 
             if (fTime >= 1.13f)
             {
-                JumpBtn.JumpButton_state = false;
-                Player_Col.SetActive(true);
-                bCheck = (int)STATE.eIDLE;
                 fTime = 0.0f;
+                isJumping = false;                
+                bCheck = (int)STATE.eIDLE;
+                Player_Col.SetActive(true);              
+                Player_animator.SetBool("isJumping", false);
             }
         }
     }
