@@ -62,13 +62,25 @@ public class ItemEffet : MonoBehaviour
         {
             this.gameObject.SetActive(true);
         }
-        //if (Input.GetTouch(0).phase == TouchPhase.Ended)
-        //{
-        //    if(EventSystem.current.IsPointerOverGameObject())
-        //    {
-
-        //    }
-        //}
+        if (Input.GetMouseButtonDown(0))
+        {
+            if(EventSystem.current.IsPointerOverGameObject())
+            {
+                if (Item_Box.Speed1_state == true)
+                {
+                    State = true;
+                }
+                if (Item_Box.Speed2_state == true)
+                {
+                    State = true;
+                }
+                if (Item_Box.Ignore_state == true)
+                {
+                    State = true;
+                }
+                this.gameObject.SetActive(false);
+            }
+        }
 
         //StartCoroutine(SpeedUpItem());
         //ItemSpeed1Up();
@@ -100,23 +112,6 @@ public class ItemEffet : MonoBehaviour
                 State = false;
             }
         }
-    }
-
-    public void OnClick()
-    {
-        if (Item_Box.Speed1_state == true)
-        {
-            State = true;
-        }
-        if (Item_Box.Speed2_state == true)
-        {
-            State = true;
-        }
-        if (Item_Box.Ignore_state == true)
-        {
-            State = true;
-        }
-        this.gameObject.SetActive(false);
     }
 
 }
