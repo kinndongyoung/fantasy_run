@@ -48,7 +48,7 @@ public class AttributeManager : MonoBehaviour
         Item2 = FindObjectOfType<ItemEffet>();
         Item3 = FindObjectOfType<ItemEffet>();
         Rand_Item = Random.Range(1, 4);
-        Rand_Attribute = Random.Range(1, 5);
+        Rand_Attribute = 4;// Random.Range(1, 5);
 
         switch(Rand_Attribute)
         {
